@@ -1,3 +1,19 @@
+const rightMenuEl = document.getElementById("rightMenu");
+
+// Hide print button for print
+window.onbeforeprint = () => {
+  rightMenuEl.style.display = "none";
+};
+
+// Show print button again once done
+window.onafterprint = () => {
+  rightMenuEl.style.display = "block";
+};
+
+function printOrder() {
+  window.print();
+}
+
 function getOrderId() {
   const urlParams = new URLSearchParams(window.location.search);
   const orderId = urlParams.get("orderId");
