@@ -7,6 +7,10 @@ function initLocalStorage() {
   }
 }
 
+function getOrders() {
+  return JSON.parse(localStorage.getItem("orders"));
+}
+
 function logout() {
   localStorage.setItem("loggedin", null);
   window.location = "../index.html";

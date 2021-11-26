@@ -26,7 +26,7 @@ function getOrderId() {
 function getOrder() {
   const orderId = getOrderId();
 
-  const order = ORDERS.filter((order) => order.orderid == orderId)[0];
+  const order = getOrders().filter((order) => order.orderid == orderId)[0];
 
   return order;
 }

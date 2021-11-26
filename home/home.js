@@ -5,7 +5,7 @@ const searchBarEl = document.getElementById("searchBar");
 searchBarEl.value = "";
 
 // Add all orders to ordersList for first load of page
-ORDERS.forEach((order) => {
+getOrders().forEach((order) => {
   ordersListEl.innerHTML += toListItem(order);
 });
 
@@ -14,14 +14,12 @@ function toListItem(order) {
 }
 
 function search() {
-  console.log(searchBarEl.value);
-
   const keyword = searchBarEl.value.toLowerCase();
-  let ordersToShow = ORDERS;
+  let ordersToShow = getOrders();
 
   // If keyword is empty then dont filter
   if (keyword != null && keyword != "") {
-    // Filter ORDERS array to get orders that match search
+    // Filter orders to get orders that match search
     ordersToShow = ordersToShow.filter(
       (order) => order.orderid.includes(keyword) || order.customer.toLowerCase().includes(keyword)
     );
