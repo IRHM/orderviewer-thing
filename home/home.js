@@ -1,6 +1,9 @@
 const ordersListEl = document.getElementById("ordersList");
 const searchBarEl = document.getElementById("searchBar");
 
+// Reset search
+searchBarEl.value = "";
+
 // Add all orders to ordersList for first load of page
 ORDERS.forEach((order) => {
   ordersListEl.innerHTML += toListItem(order);
@@ -28,5 +31,11 @@ function search() {
   ordersListEl.innerHTML = "";
 
   // Update ordersList to show new filtered items
-  ordersListEl.innerHTML = ordersToShow.map(toListItem).join("");
+  let ih = "No orders match your search";
+
+  if (ordersToShow.length > 0) {
+    ih = ordersToShow.map(toListItem).join("");
+  }
+
+  ordersListEl.innerHTML = ih;
 }

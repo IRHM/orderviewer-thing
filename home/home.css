@@ -1,6 +1,29 @@
+#searchBar {
+  width: 300px;
+  padding: 5px;
+  border: 2px solid rgb(124, 124, 124);
+  border-radius: 4px;
+}
+
+#searchBar:hover {
+  border-color: black;
+}
+
 #ordersList {
   list-style: none;
   padding-left: 0;
+}
+
+#ordersList a li {
+  padding: 10px 8px;
+  margin-bottom: 5px;
+  border: 2px solid rgb(209, 209, 209);
+  border-radius: 4px;
+  transition: border-color 200ms ease;
+}
+
+#ordersList a li:hover {
+  border-color: black;
 }
 
 #ordersList a {

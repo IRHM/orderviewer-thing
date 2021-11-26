@@ -7,12 +7,15 @@
   <title>Order Details</title>
   <link rel="stylesheet" href="./../all.css">
   <link rel="stylesheet" href="./order.css">
+  <script src="./../all.js" defer></script>
   <script src="./../data.js" defer></script>
   <script src="./order.js" defer></script>
 </head>
 <body>
   <div id="rightMenu">
     <button onclick="printOrder()">Print Order</button>
+    <button onclick="markOrderAsCollected()">Mark As Collected</button>
+    <button onclick="logout()">Logout</button>
   </div>
 
   <h2>Order Details</h2>
@@ -51,7 +54,7 @@
     </div>
 
     <div>
-      <span class="bold">Rep Sales Person:</span>
+      <span class="bold">Resp Sales Person:</span>
       <span id="respsalesperson"></span>
     </div>
 
