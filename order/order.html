@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details</title>
+  <link rel="stylesheet" href="./order.css">
+  <script src="./../data.js" defer></script>
+  <script src="./order.js" defer></script>
+</head>
+<body>
+  <h2>Order Details</h2>
+
+  <h4 id="details_customer"></h3>
+
+  <div class="orderInfo">
+    <div>
+      <span class="bold">Order ID:</span>
+      <span id="orderid"></span>
+    </div>
+
+    <div>
+      <span class="bold">Customer ID:</span>
+      <span id="customerid"></span>
+    </div>
+
+    <div>
+      <span class="bold">Customer Name:</span>
+      <span id="customername"></span>
+    </div>
+
+    <div>
+      <span class="bold">Invoice Address:</span>
+      <span id="invaddr"></span>
+    </div>
+
+    <div>
+      <span class="bold">Delivery Address:</span>
+      <span id="delivaddr"></span>
+    </div>
+
+    <div>
+      <span class="bold">Delivery Date:</span>
+      <span id="deliverydate"></span>
+    </div>
+
+    <div>
+      <span class="bold">Rep Sales Person:</span>
+      <span id="respsalesperson"></span>
+    </div>
+
+    <div>
+      <span class="bold">Comment:</span>
+      <span id="comment"></span>
+    </div>
+
+    <div>
+      <span class="bold">Total Price:</span>
+      <span id="totalprice"></span>
+    </div>
+
+    <div>
+      <span class="bold">Products:</span>
+
+      <table id="productsTable">
+        <tr>
+          <th>Code</th>
+          <th>Product</th>
+          <th>Description</th>
+          <th>Supplier Code</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Shelf Position</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

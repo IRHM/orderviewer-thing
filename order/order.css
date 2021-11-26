@@ -1,0 +1,9 @@
+.orderInfo {
+  display: flex;
+  flex-flow: column;
+  font-size: 18px;
+}
+
+.bold {
+  font-weight: bold;
+}
