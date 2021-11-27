@@ -1,4 +1,5 @@
 const rightMenuEl = document.getElementById("rightMenu");
+// const order = getOrder();
 
 // Hide print button for print
 window.onbeforeprint = () => {
@@ -14,27 +15,37 @@ function printOrder() {
   window.print();
 }
 
-function markOrderAsCollected() {}
+function markOrderAsCollected() {
+  const order = getOrder();
+  const collected = order.collected ? false : true;
+
+  let orders = getOrders();
+  orders.filter((e) => e.orderid == order.orderid)[0].collected = collected;
+
+  saveOrder(orders);
+
+  // Update order details shown
+  showOrderDetails();
+}
 
 function getOrderId() {
   const urlParams = new URLSearchParams(window.location.search);
   const orderId = urlParams.get("orderId");
 
+  // If no order Id in the link, go back to home page
+  if (!orderId) window.location = "../home/home.html";
+
   return orderId;
 }
 
 function getOrder() {
-  const orderId = getOrderId();
-
-  const order = getOrders().filter((order) => order.orderid == orderId)[0];
-
-  return order;
+  return getOrders().filter((order) => order.orderid == getOrderId())[0];
 }
 
 function showOrderDetails() {
   const order = getOrder();
-
   const els = {
+    markOrderAsCollected: document.getElementById("markOrderAsCollected"),
     orderid: document.getElementById("orderid"),
     customerid: document.getElementById("customerid"),
     customername: document.getElementById("customername"),
@@ -42,11 +53,13 @@ function showOrderDetails() {
     delivaddr: document.getElementById("delivaddr"),
     deliverydate: document.getElementById("deliverydate"),
     respsalesperson: document.getElementById("respsalesperson"),
+    collected: document.getElementById("collected"),
     comment: document.getElementById("comment"),
     totalprice: document.getElementById("totalprice"),
     productsTable: document.getElementById("productsTable")
   };
 
+  els.markOrderAsCollected.innerHTML = order.collected ? "Mark Uncollected" : "Mark Collected";
   els.orderid.innerHTML = order.orderid;
   els.customerid.innerHTML = order.customerid;
   els.customername.innerHTML = order.customer;
@@ -54,8 +67,19 @@ function showOrderDetails() {
   els.delivaddr.innerHTML = order.delivaddr;
   els.deliverydate.innerHTML = order.deliverydate;
   els.respsalesperson.innerHTML = order.respsalesperson;
+  els.collected.innerHTML = order.collected ? order.collected : "false";
   els.comment.innerHTML = order.comment;
   els.totalprice.innerHTML = order.totalprice;
+  els.productsTable.innerHTML = `
+  <tr>
+    <th>Code</th>
+    <th>Product</th>
+    <th>Description</th>
+    <th>Supplier Code</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>Shelf Position</th>
+  </tr>`;
 
   order.products.forEach((product) => {
     els.productsTable.innerHTML += `

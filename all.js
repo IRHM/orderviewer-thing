@@ -11,6 +11,10 @@ function getOrders() {
   return JSON.parse(localStorage.getItem("orders"));
 }
 
+function saveOrder(orders) {
+  localStorage.setItem("orders", JSON.stringify(orders));
+}
+
 function logout() {
   localStorage.setItem("loggedin", null);
   window.location = "../index.html";
