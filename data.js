@@ -4218,5 +4218,5 @@ const ORDERS = [
   }
 ];
 
-const USER = "myuser";
-const PASS = "1234";
+const USER = "VAMK";
+const PASS = "VAMK";
