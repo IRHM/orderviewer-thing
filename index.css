@@ -17,15 +17,6 @@
   margin-bottom: 10px;
 }
 
-#login form button {
-  border: 0;
-  outline: 0;
-  color: white;
-  background-color: black;
-  cursor: pointer;
-  padding: 5px;
-}
-
 #loginNotice {
   margin-top: 15px;
 }

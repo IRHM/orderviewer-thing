@@ -69,7 +69,7 @@ function showOrderDetails() {
   els.respsalesperson.innerHTML = order.respsalesperson;
   els.collected.innerHTML = order.collected ? order.collected : "false";
   els.comment.innerHTML = order.comment;
-  els.totalprice.innerHTML = order.totalprice;
+  els.totalprice.innerHTML = `$${order.totalprice}`;
   els.productsTable.innerHTML = `
   <tr>
     <th>Code</th>
@@ -89,7 +89,7 @@ function showOrderDetails() {
       <td>${product.description}</td>
       <td>${product.suppliercode}</td>
       <td>${product.qty}</td>
-      <td>${product.unit_price}</td>
+      <td>$${product.unit_price}</td>
       <td>${product.shelf_pos}</td>
     </tr>
     `;
