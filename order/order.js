@@ -1,5 +1,18 @@
 const rightMenuEl = document.getElementById("rightMenu");
-// const order = getOrder();
+const els = {
+  markOrderAsCollected: document.getElementById("markOrderAsCollected"),
+  orderid: document.getElementById("orderid"),
+  customerid: document.getElementById("customerid"),
+  customername: document.getElementById("customername"),
+  invaddr: document.getElementById("invaddr"),
+  delivaddr: document.getElementById("delivaddr"),
+  deliverydate: document.getElementById("deliverydate"),
+  respsalesperson: document.getElementById("respsalesperson"),
+  collected: document.getElementById("collected"),
+  comment: document.getElementById("comment"),
+  totalprice: document.getElementById("totalprice"),
+  productsTable: document.getElementById("productsTable")
+};
 
 // Hide print button for print
 window.onbeforeprint = () => {
@@ -28,6 +41,15 @@ function markOrderAsCollected() {
   showOrderDetails();
 }
 
+function saveComment() {
+  const order = getOrder();
+
+  let orders = getOrders();
+  orders.filter((e) => e.orderid == order.orderid)[0].comment = els.comment.value;
+
+  saveOrder(orders);
+}
+
 function getOrderId() {
   const urlParams = new URLSearchParams(window.location.search);
   const orderId = urlParams.get("orderId");
@@ -44,20 +66,6 @@ function getOrder() {
 
 function showOrderDetails() {
   const order = getOrder();
-  const els = {
-    markOrderAsCollected: document.getElementById("markOrderAsCollected"),
-    orderid: document.getElementById("orderid"),
-    customerid: document.getElementById("customerid"),
-    customername: document.getElementById("customername"),
-    invaddr: document.getElementById("invaddr"),
-    delivaddr: document.getElementById("delivaddr"),
-    deliverydate: document.getElementById("deliverydate"),
-    respsalesperson: document.getElementById("respsalesperson"),
-    collected: document.getElementById("collected"),
-    comment: document.getElementById("comment"),
-    totalprice: document.getElementById("totalprice"),
-    productsTable: document.getElementById("productsTable")
-  };
 
   els.markOrderAsCollected.innerHTML = order.collected ? "Mark Uncollected" : "Mark Collected";
   els.orderid.innerHTML = order.orderid;
@@ -68,7 +76,7 @@ function showOrderDetails() {
   els.deliverydate.innerHTML = order.deliverydate;
   els.respsalesperson.innerHTML = order.respsalesperson;
   els.collected.innerHTML = order.collected ? order.collected : "false";
-  els.comment.innerHTML = order.comment;
+  els.comment.value = order.comment;
   els.totalprice.innerHTML = `$${order.totalprice}`;
   els.productsTable.innerHTML = `
   <tr>
