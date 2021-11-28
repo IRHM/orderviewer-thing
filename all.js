@@ -1,3 +1,6 @@
+// Don't allow access to page if not logged in
+if (localStorage.getItem("loggedin") == "null") logout();
+
 initLocalStorage();
 
 function initLocalStorage() {
